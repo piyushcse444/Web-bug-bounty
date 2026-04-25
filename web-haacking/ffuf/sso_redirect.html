@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+    <html class="login-pf">
+
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="robots" content="noindex, nofollow">
+
+                    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+            <title>SBI SPARK</title>
+            <link rel="icon" href="/sso/resources/ijurt/login/SBI-admin-portal-theme-78/img/favicon.ico" />
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <link href="/sso/resources/ijurt/common/keycloak/web_modules/@patternfly/react-core/dist/styles/base.css" rel="stylesheet" />
+                    <link href="/sso/resources/ijurt/common/keycloak/web_modules/@patternfly/react-core/dist/styles/app.css" rel="stylesheet" />
+                    <link href="/sso/resources/ijurt/common/keycloak/node_modules/patternfly/dist/css/patternfly.min.css" rel="stylesheet" />
+                    <link href="/sso/resources/ijurt/common/keycloak/node_modules/patternfly/dist/css/patternfly-additions.min.css" rel="stylesheet" />
+                    <link href="/sso/resources/ijurt/common/keycloak/lib/pficon/pficon.css" rel="stylesheet" />
+                    <link href="/sso/resources/ijurt/login/SBI-admin-portal-theme-78/css/login.css" rel="stylesheet" />
+                    <link href="/sso/resources/ijurt/login/SBI-admin-portal-theme-78/css/tile.css" rel="stylesheet" />
+                    <link href="/sso/resources/ijurt/login/SBI-admin-portal-theme-78/css/customize-brand.css" rel="stylesheet" />
+                    <link href="/sso/resources/ijurt/login/SBI-admin-portal-theme-78/css/base.css" rel="stylesheet" />
+                    <link href="/sso/resources/ijurt/login/SBI-admin-portal-theme-78/css/app.css" rel="stylesheet" />
+                    <link href="/sso/resources/ijurt/login/SBI-admin-portal-theme-78/css/captcha.css" rel="stylesheet" />
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+			
+			
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>	
+        <style>
+                body, input, button, select, textarea {
+                font-family: 'Roboto';
+                }
+                body, h1, h2, h3, h4, h5, h6, p, a, span, div, input, button, select, textarea {
+                    font-family: 'Roboto', sans-serif !important;
+					font-weight: 500 !important
+                }
+                a, span{
+                    text-decoration:none !important;
+                    display:block;
+                }
+                #reset-login{
+                    display:none;
+                }
+                .left_card #kc-username {
+                    display: none;
+                }
+		.footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #050C17;
+            color: white;
+            text-align: left;
+            padding: 6px 0px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            overflow: hidden;
+			background-color: #1A202B !important;
+			margin-bottom: 10px;
+        }
+        .footer-content div {
+            margin: 12px;
+        }
+        .footer-content h3 {
+            font-weight: 600;
+            margin-left: -10%;
+        }
+        .footer-content p,
+        .footer-content a {
+            font-size: 11px;
+            margin-top: 2px;
+            color: white !important;
+            margin-bottom: 2px;
+        }
+        .footer-copyright {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+            font-size: 13px;
+        }
+        .footer-copyright a {
+            color: white !important;
+			font-size: 85% !important;
+        }
+                @media (min-width: 600px) {
+            .pf-c-login__main-footer-links a {
+                flex: 1 1 48%;
+            }
+        }
+
+        @media (max-width: 990px) {
+            .login-pf-page .card-pf {
+                padding: 20px 40px 20px 50px;
+                width: 100% !important;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .pf-c-login__main-footer-links a {
+                flex: 1 1 30%;
+            }
+        }
+
+       
+		
+		
+            </style>
+			
+			<script>
+              document.addEventListener('DOMContentLoaded', function() {
+             // Force Chrome not to remember these fields
+             const username = document.getElementById('username');
+             const password = document.getElementById('password');
+  
+             if (username) {
+             username.setAttribute('autocomplete', 'off');
+              username.value = '';
+             }
+             if (password) {
+              password.setAttribute('autocomplete', 'new-password');
+              password.value = '';
+             }
+             });
+            </script>
+    </head>
+
+    <body class="" style="overflow-x: hidden;">
+        <div class="main_div">
+        <div class="login-pf-page">
+            <div id="kc-header" class="login-pf-page-header" >
+            </div>
+            <div class="Bg_Block">
+                <div class="col-md-6" style="display:none;">
+                    <div class="kc-login-note-card-class">
+                        <ul class="">
+                                <li class="">Please select Azure OIDC for Client 1.</li>
+                                <li class="">Please select Google for Client 2.</li>
+                                <li class="">Please select Azure SAML for Client 3.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Left Section -->
+                <div class="left-section">
+                    <div class="spark_logo">
+                    <div id="kc-header-wrapper" class="">
+						<div class="kc-logo-text">
+						 <span>sparks lms</span>
+						</div>						
+					</div>				   
+                    
+                    </div>
+
+                <div class="inputcontainer">
+                    <div class="card-pf left_card" style="border-bottom-right-radius: unset; border-top-right-radius: unset; background-color: #000C1C; opacity: 85%; width: 33%; display:none">
+                     <div class="kc-logo-text"><span>Srilanka</span></div>
+                                            
+                        <div id="kc-content">
+                            <div id="kc-content-wrapper">
+    
+
+
+ 
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-pf">
+                       <!--<div class="topbtmlogo">
+                            <img src="https://uat.gyandhara.bank.sbi/WCR/WCRClientInfo/Logos/3/sbi_logo.jpg">
+                        </div>-->
+                     
+                        <div id="kc-content" style="margin-top: 0%;">
+                            <div id="kc-content-wrapper">
+
+
+   
+    <div id="kc-form">
+     <div class="top-logo">
+        <img src="/sso/resources/ijurt/login/SBI-admin-portal-theme-78/img/halfround.png">
+    </div>
+      <div id="kc-form-wrapper">
+     
+            <form id="kc-form-login" onsubmit="login.disabled = true; return true;" action="https://spark.sbi.bank.in/sso/realms/sbiprod/login-actions/authenticate?session_code=a6MsncYppXMRvHCU7MXcw3XV2qFs2pxEuOmGAgtcbBc&amp;execution=36c9c118-ce7a-42ae-8f5e-1f4fa7a8b962&amp;client_id=admin-web&amp;tab_id=yLuUr8HgvpY" method="post" autocomplete="off" novalidate>           
+            <div class="internalexternal-wrapper">
+                <div class="internalexternal-options">
+                 <i class="fa fa-users" style="color: #000000;"></i>
+                    <label>
+                        <input tabindex="1" type="radio" name="userType" value="internal_u"
+                                checked
+                        >
+                        Internal User
+                    </label>
+                    <label>
+                        <input tabindex="1" type="radio" name="userType" value="external_u"
+                            
+                        >
+                        External User
+                    </label>
+                </div>
+            </div>
+                    <div class="form-group" >
+                    <div class="form-row">
+                       <!-- <label for="username" class="pf-c-form__label pf-c-form__label-text" >
+                            User ID
+                        </label>-->
+                        <i class="fa fa-user"></i>
+						<input type="text" style="display:none">
+                        <input tabindex="2" id="username" class="pf-c-form-control" onpaste="return false" name="username" placeholder="User ID" value=""  type="text" autofocus autocomplete="off"
+                               aria-invalid=""
+                        />
+                        </div>
+
+
+                    </div>
+
+                <div class="form-group">
+                <div class="form-row">
+                   <!-- <label for="password" class="pf-c-form__label pf-c-form__label-text" >Password</label>-->
+                    <i class="fa fa-lock"></i>
+					<input type="text" style="display:none">
+                    <input tabindex="2" id="password" class="pf-c-form-control" name="password" type="text" placeholder="Password" autocomplete="off" autocapitalize="off" spellcheck="false" onfocus="this.type='password'; this.removeAttribute('readonly');" onblur="if (!this.value) this.type='text';" readonly
+                    aria-invalid="" />
+                        </div>
+
+                </div>
+        
+                
+                <div class="form-row">  
+                   <div id="captcha" class="form_div">
+                        <div class="preview"><span style="transform:rotate(0deg)"><img src="data:image/png;base64,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" alt="CAPTCHA Image" id="captcha_image"/></span></div>
+                        <div class="captcha_form"> 
+                        
+                            <input type="text" id="captcha_form" name="captcha" class="form_input_captcha" placeholder="Enter Captcha Text" onpaste="return false;" tabindex="5">                   
+                             <input type="hidden" name="realm_name" id="realm_name" value="sbiprod" />
+                             <input type="hidden" id="captcha_id" name="captchaId">
+                        </div>
+                    </div>
+                    
+                          <input type="hidden" id="random_iv" value="0wVQiHDYnxkYFJRnBbskFA==" />
+                    
+                    <div id="captcha" class="right_section_reload">
+                    <div class="captcha_buttons_cls">
+                        <div class="form-row form_cls_new">
+                              <button type="button" id="refresh_captcha" class="captcha-refresh-btn" title="Refresh CAPTCHA" tabindex="4">
+                                <i class="fa fa-refresh"></i>
+                            </button>
+                        </div>
+                        <div class="form-row form_cls_new">
+                                <button type="button" id="captcha_speaker" data-text="ssA4h4fHv8E0JO/IDPAJQw==" data-iv="M3gpLAw9lbweJbIuzdB88w==" class="captcha-refresh-btn" title="audio CAPTCHA" tabindex="3">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            
+
+                            
+                        </div>
+                        </div>
+                        <div id="kc-form-buttons" class="form-group">
+                              <input type="hidden" id="id-hidden-input" onpaste="return false" name="credentialId" />
+                              <input tabindex="6" class="pf-c-button pf-m-primary pf-m-block btn-lg" name="login" onpaste="return false" id="kc-login" type="submit" value="Login"/>
+                        </div>
+                    </div>
+
+                </div>
+
+                 <div class=" forgot_password">
+                        <span><a tabindex="7" href="/sso/realms/sbiprod/login-actions/reset-credentials?client_id=admin-web&amp;tab_id=yLuUr8HgvpY">Forgot Password?</a></span>
+                  </div>
+
+                <div class="form-group login-pf-settings" style="display:none">
+                    <div id="kc-form-options">
+                        </div>
+                        
+
+                  </div>
+
+                 
+                 
+            </form>   
+                        <!-- 🔔 HRMS Password Ticker Alert -->
+<div class="hrms-ticker-wrapper" id="hrms-ticker">
+  <div class="hrms-ticker-label">
+    📢 <strong></strong>
+  </div>
+  <div class="hrms-ticker-track">
+    <div class="hrms-ticker-text">
+      Use <strong>HRMS password</strong> for internal user login.
+    </div>
+  </div>
+</div>
+
+        <h1 class="authorizedtext">
+    Authorized access only. All system activities are monitored and recorded.  
+            <!--APMID:APP06828-->
+            </h1> 
+
+            <h1 class="copyrighttext">Copyright (C) SBI rights reserved <br> 
+            <!--APMID:APP06828-->
+            </h1>
+                   
+		
+		      <script src="/sso/resources/ijurt/login/SBI-admin-portal-theme-78/config/captcha-config.js"></script>
+                 <script src="/sso/resources/ijurt/login/SBI-admin-portal-theme-78/js/xmsop.js"></script>
+        </div>
+
+    </div>
+ 
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    </div>
+                </div>
+                    
+                <!-- Right Section -->
+                <div class="right-section">
+                    <div id="kc-header-wrapper" class="">
+                        <div class="kc-sbilogo-right">                        
+                        </div>                      
+                    </div>
+                    
+                </div>
+               
+        </div>
+        <footer class="footer" style="display:none;">
+             <div class="footer_toggle" style="display:none;">   
+             <h1 class="footer_head" style="padding: 0px 6px 6px; ">Reach us here</h1>          
+             <div class="footer-content" >
+             <div>
+             <h3><i class="fas fa-globe" style="margin-right: 3%;"></i>Web</h3>
+             <p><a href="https://www.srilankanaviationcollege.com/" class="underlined">
+                www.srilankanaviationcollege.com
+             </a></p>
+            </div>
+            <div>
+            <h3><i class="far fa-envelope" style="margin-right: 4%;"></i>Email</h3>
+            <p style="margin-left: 6px;">training@srilankan.com</p>
+            </div>
+            <div>
+            <h3><i class="fas fa-phone-alt" style="margin-right: 4%;"></i>Telephone</h3>
+            <p style="margin-left: 12px;">+94 19 733 4000<br>
+               +94 74 444 4000
+            </p>
+            </div>
+            <div>
+            <h3><i class="fas fa-map-marker-alt" style="margin-right: 4%;"></i>Address</h3>
+            <p>SriLankan Aviation College,<br>SriLankan Airlines Ltd.,<br>Bandaranaike International Airport,<br>Katunayake, Sri Lanka.<br>
+            </p>
+            </div>
+            </div>
+            </div>
+            <div class="footer-copyright" style="cursor:pointer;">
+            <a target="_blank" href="https://www.tenneo.com" style="padding: 0px 6px;">Powered By - Tenneo</a>
+            <h1 style="padding: 0px 6px;">SriLankan IT Systems © 2024. All Rights Reserved.</h1>
+            </div>
+        </footer>           
+        </div>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+        <script src="/sso/resources/ijurt/login/SBI-admin-portal-theme-78/js/xmsop.js" type="text/javascript" ></script>
+    </body>
+
+    </html>
+

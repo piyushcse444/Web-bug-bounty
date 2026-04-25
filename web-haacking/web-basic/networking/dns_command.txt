@@ -1,0 +1,2 @@
+1) nslookup --type=CNAME shop.website.thm
+2) nslookup spark.bank.sbi.in
