@@ -1,5 +1,0 @@
-
-************************************  REQUEST HEADERS
-1) method /HTTP/version
-   method - GET,POST,PUT,PATCH,DELETE
-   version - 

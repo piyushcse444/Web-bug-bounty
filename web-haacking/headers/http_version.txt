@@ -1,0 +1,79 @@
+# 🌐 HTTP + TCP Quick Attack Notes
+
+## 🔌 TCP 3-Way Handshake
+Purpose → Establish connection between client & server
+Steps:
+1. SYN → Client sends request to connect
+2. SYN-ACK → Server acknowledges
+3. ACK → Client confirms
+
+👉 After this → TCP connection established → HTTP data transfer starts
+
+## 📡 HTTP/1.0 (How it Works)
+* One request = one TCP connection
+* Connection closes after response ❌
+* No persistent connection
+* `Host` header NOT mandatory
+
+### Flow:
+1. TCP handshake
+2. Send request
+3. Get response
+4. Connection closes
+
+## ⚠️ HTTP/1.0 Weaknesses (Attack Focus)
+* No Host header → Virtual host confusion
+* Default site exposure via IP
+* Weak caching → data leakage
+* New connection each time → resource exhaustion
+
+### 🔥 Attack Strategy:
+* Access via IP instead of domain
+* Remove Host header
+* Check default/hidden apps
+* Test cache leakage
+
+## 🚀 HTTP/1.1 (How it Works)
+* Persistent connection (keep-alive) ✅
+* Multiple requests on same TCP connection
+* `Host` header mandatory
+* Supports chunked transfer encoding
+* Better caching
+
+### Flow:
+1. TCP handshake
+2. Multiple HTTP requests over same connection
+3. Connection reused
+
+## ⚠️ HTTP/1.1 Vulnerabilities (Attack Focus)
+
+### 🔥 Host Header Injection
+* Modify `Host` header
+* Exploit password reset / redirects
+
+### 🔥 Request Smuggling
+* Conflict between:
+  * `Content-Length`
+  * `Transfer-Encoding`
+* Desync frontend/backend
+
+### 🔥 Keep-Alive Abuse (Slowloris)
+* Send partial requests slowly
+* Keep connection open → DoS
+
+### 🔥 Cache Poisoning
+* Manipulate:
+  * `Host`
+  * `X-Forwarded-Host`
+* Poison shared cache
+
+### 🔥 Header Injection
+* Inject `\r\n`
+* Modify response / cookies
+
+## 🧠 Attack Checklist
+* Change / remove `Host`,' X-Forwarded-Host' header -> password reset, redirect 
+* Try HTTP/1.0 vs HTTP/1.1
+* Test CL vs TE (smuggling)
+* Observe caching behavior
+* Abuse keep-alive connections

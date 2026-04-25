@@ -1,0 +1,122 @@
+# 🌐 HTTP REQUEST HEADERS — SHORT ATTACK NOTES
+
+🔹 1) <method> <path> HTTP/<version>
+      ✅ Method (what action)
+         * GET → fetch data
+         * POST → send data
+         * PUT → update full
+         * PATCH → update partial
+         * DELETE → remove
+         💥 Test:
+            * Change method (GET → POST → PUT)
+            🎯 Find: method bypass / hidden functionality
+      ✅ Version
+         * HTTP/1.0 → no keep-alive, no Host required
+         * HTTP/1.1 → keep-alive, Host required
+         💥 Test:
+            * Switch 1.1 ↔ 1.0
+            🎯 Find: WAF bypass / different behavior
+
+🔹 2) Host: <domain/IP>  👉 Tells server which site you want
+      💥 Test:
+         * Change Host
+         * Add duplicate Host
+      🎯 Find:
+         * Host header injection
+         * Password reset poisoning
+
+🔹 3) Accept-Language  👉 Preferred language
+      💥 Test:
+         * `<script>alert(1)</script>`
+         * `../../etc/passwd`
+      🎯 Find:
+         * XSS
+         * Cache poisoning
+         * LFI (rare)
+
+🔹 4) Upgrade-Insecure-Requests 👉 Prefer HTTPS
+      💥 Test:
+         * Remove / set 0
+      🎯 Check:
+         * HTTPS enforcement
+
+🔹 5) User-Agent  👉 Client/browser info
+      💥 Test:
+         * `Googlebot`
+         * `<script>alert(1)</script>`
+      🎯 Find:
+         * Access bypass
+         * XSS
+         * Log injection
+      
+🔹 6) Accept   👉 Response format
+      💥 Test:
+         * `application/json`
+         * `application/xml`
+      🎯 Find:
+         * Hidden APIs
+         * Data leakage
+
+🔹 7) Accept-Encoding    👉 Compression methods
+      💥 Test:
+         * Remove / change values
+      🎯 Use:
+         * Response behavior changes
+
+🔹 8) Connection    👉 Connection control
+      * keep-alive → reuse connection
+      * close → terminate
+      💥 Test:
+         * Slow requests
+      🎯 Find:
+         * DoS (Slowloris)
+
+🔹 9) Origin 👉 Request kis domain se initiate hua (scheme + domain)
+      💥 Test:
+         * Origin: https://attacker.com
+         * Remove header
+      🎯 Find:
+         * CORS misconfiguration
+         * Sensitive data exposure
+
+🔹 10) Referer 👉 Previous page URL (full path)
+      💥 Test:
+         * Referer: https://attacker.com
+         * Remove header
+      🎯 Find:
+         * Referer-based auth bypass
+         * CSRF protection bypass (weak cases)
+
+🔹 10)  Cache-Control: max-age=0   
+
+
+🔹 12)  If-None-Match -> 
+            i) browser send fisrt req /home
+            ii) get ETag in response 
+            iii) browser keep (/home : ETag+response) in Cache
+            iv) now next req is /login 
+            v) check if /login is there in cache or not 
+            vi) if not then send /login without If-None-Match again get ETag1
+            vii) browser caache -> (/home : ETag+res , /login : ETag+res)
+            viii) if again browser send req /home browser get ETag
+            ix) now browser send ETag value in If-None-Match header
+            x) backend validate that ETag and if verified send only 304 - Not Modified
+            xi) now browser show same response that is in cache with key /home
+
+         RISKs:-
+            Cache key SHOULD be:(URL + Host + Vary headers + relevant cookies)
+            If any part is missing → risk of poisoning   
+         🔥 Bug bounty mindset checklist
+               When testing caching, always ask:
+                  1. Does response change with:
+                  Host
+                  User-Agent
+                  Cookie
+                  Accept-Language
+                  2. Is Vary present and correct?
+                  3. Does ETag change properly per user/content?
+                  4. Does cache ignore something it shouldn’t?
+
+
+
+

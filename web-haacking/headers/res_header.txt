@@ -1,0 +1,158 @@
+# 🌐 HTTP RESPONSE HEADERS — SHORT ATTACK NOTES
+
+---
+
+## 🔹 1) Status Line
+
+```text
+HTTP/<version> <status_code> <message>
+```
+
+### Example:
+
+```http
+HTTP/1.1 200 OK
+```
+
+* 200 → success
+* 301/302 → redirect
+* 403 → forbidden
+* 500 → server error
+
+💥 Test:
+
+* Observe status change when modifying request
+  🎯 Find: access control issues / hidden endpoints
+
+---
+
+## 🔹 2) Server
+
+```http
+Server: Werkzeug/3.1.5 Python/3.12.3
+```
+
+👉 Reveals backend tech
+
+💥 Use:
+
+* Search known vulnerabilities
+* Fingerprint framework
+
+🎯 Find:
+
+* Version-specific exploits
+* Misconfigurations
+
+---
+
+## 🔹 3) Date
+
+```http
+Date: Sat, 25 Apr 2026 09:34:58 GMT
+```
+
+👉 Server time
+
+💥 Use:
+
+* Check time mismatch
+
+🎯 Rare but useful for:
+
+* Cache issues
+* Replay analysis
+
+---
+
+## 🔹 4) Content-Type
+
+```http
+Content-Type: text/html; charset=utf-8
+```
+
+👉 Response format
+
+💥 Test:
+
+* Change `Accept` header
+
+🎯 Find:
+
+* JSON/XML exposure
+* XSS (wrong type handling)
+
+---
+
+## 🔹 5) Content-Length
+
+```http
+Content-Length: 1040
+```
+
+👉 Size of response
+
+💥 Test (advanced):
+
+* With request smuggling (CL vs TE)
+
+🎯 Find:
+
+* Desync attacks
+
+---
+
+## 🔹 6) Vary
+
+```http
+Vary: Cookie
+```
+
+👉 Cache depends on this header
+
+💥 Test:
+
+* Change Cookie / headers
+
+🎯 Find:
+
+* Cache poisoning
+* User data leakage
+
+---
+
+## 🔹 7) Connection
+
+```http
+Connection: close
+```
+
+👉 Connection behavior
+
+* close → connection ends
+* keep-alive → reused
+
+💥 Test:
+
+* Slow requests
+
+🎯 Find:
+
+* DoS possibilities
+
+---
+
+# 🎯 FINAL
+
+👉 Response headers reveal:
+
+* Server tech
+* Caching logic
+* Parsing behavior
+
+👉 Use them to:
+
+* Fingerprint
+* Find misconfig
+* Chain attacks
+    
