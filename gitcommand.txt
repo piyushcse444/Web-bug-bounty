@@ -1,0 +1,12 @@
+git init
+git clone <url>
+git status
+git add .
+git commit -m "msg"
+git push
+git pull
+git branch
+git checkout -b branch
+git merge branch
+git log --oneline
+git switch branch_name

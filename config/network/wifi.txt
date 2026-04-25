@@ -1,0 +1,2 @@
+nmcli dev wifi list
+nmcli wifi connect "POCO M3" password "piyush6767"
