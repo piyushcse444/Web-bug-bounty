@@ -1,0 +1,2 @@
+1) feedback_submit api allow me to rite feedback
+    i) simple text, long text, special char text ->behaviour

@@ -1,0 +1,17 @@
+flag.txt
+admin
+static
+static/file
+static/flag.txt
+feeback
+static/feeback.txt
+static/feedback
+root
+static/feedback.txt
+feedback.txt
+submit_feedback
+static/submit_feedback
+submit_feedback.txt
+static/submit_feedback.txt
+static/images/flag
+static/images/flag.txt

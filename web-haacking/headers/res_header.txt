@@ -102,7 +102,8 @@ Content-Length: 1040
 
 ---
 
-## 🔹 6) Vary
+## 🔹 6) Vary -> check if the value of haeders of vary is diff then 
+backend didn't send value from cache it generate fresh value.
 
 ```http
 Vary: Cookie
@@ -155,4 +156,7 @@ Connection: close
 * Fingerprint
 * Find misconfig
 * Chain attacks
+
+
+Accept-Ranges: bytes means the server allows partial content download using byte-range requests (useful for resume/streaming).
     
