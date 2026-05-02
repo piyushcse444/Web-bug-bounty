@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>"Learn HTML for XSS</title>
+    </head>
+    <body>
+        <h1> Learning HTML </h1> 
+          &lt;img src=x onerror=alert(1)&gt;
+<div class="content">
+            <!-- Input Section -->
+            <div class="card input-card">
+                <h2>Enter Your CSR</h2>
+                <form action="/csr" method="POST">
+                    <div class="form-group">
+                        <textarea id="csr" name="csr" rows="10" placeholder="Paste your CSR here..." required="">-----BEGIN CERTIFICATE REQUEST-----
+MIIDeDCCAmACAQAwggEDMQswCQYDVQQGEwJJbjEmMCQGA1UECAwdPGltZyBzcmM9
+eCBvbmVycm9yPWFsZXJ0KDEwKT4xJjAkBgNVBAcMHTxpbWcgc3JjPXggb25lcnJv
+cj1hbGVydCgxMCk+MSYwJAYDVQQKDB08aW1nIHNyYz14IG9uZXJyb3I9YWxlcnQo
+MTApPjEmMCQGA1UECwwdPGltZyBzcmM9eCBvbmVycm9yPWFsZXJ0KDEwKT4xJjAk
+BgNVBAMMHTxpbWcgc3JjPXggb25lcnJvcj1hbGVydCgxMCk+MSwwKgYJKoZIhvcN
+AQkBFh08aW1nIHNyYz14IG9uZXJyb3I9YWxlcnQoMTApPjCCASIwDQYJKoZIhvcN
+AQEBBQADggEPADCCAQoCggEBANL79mWCE2BrhA5Mb6TaVRwyfOX1XPQtnCgE1mxk
+/rj0G/hFvDyMjZ56rRsfQM/EM979FecquziJwYgk0KzXHfvU/QAdTIRQe4VE1WA4
+r+2S19sehAmt6Rbe2tqA+wG9Mln5nVXL7Y1g0Qr124GV7g1tMq9tKL0MBK4iRnP1
+EzyPgmVoh0uVsvEs6y3Zl2bC7kWs3sNRbhzw2V7oURsl4F2nbMHGR9vaGojZI1KH
+TBK7qK1+sSJ3UfbVHvr1ICnL+IHwir6IvGjbVWSyzp6MOK2TWbe8lj1hHH/owTuq
+3aRBzzlPcIbkWoko+Nk84+zJJ+tX65rBGZhBlA/xZQvIMFsCAwEAAaAuMCwGCSqG
+SIb3DQEJAjEfDB08aW1nIHNyYz14IG9uZXJyb3I9YWxlcnQoMTApPjANBgkqhkiG
+9w0BAQsFAAOCAQEAVQftViczsFpxa6jc6vD1JumZLxtxyIOw51c2u+OfWjvi5RXs
+cvBdI2qs4xZ38CucEgmVzSMzAwn1qJsNKFyHwU3mJHI5MzU/uj6UIZIszHjWTyQ+
+D+oklQKtFO/i+0ulJrpn21hnnMOBjFZsZuIsRCoX+RjhVLExqGrwL0uX3MKFE9zS
+VAny5MhdqSysYFGVQmMIGIoa2B/231NngO6MrKTRBQSO75D+sDH5yat3CEfCA5mg
+CajxLXrn2INAAKyWD3OSyFqYUyIxVqpjiyR7I9+5KMBBBU2BulbqM/mfjjksVe/X
+EcL/I2/U5rBP5PpMWv+mcnI6880rh5PT0XilEw==
+-----END CERTIFICATE REQUEST-----</textarea>
+                    </div>
+                    <button type="submit" class="button">Decode</button>
+                </form>
+            </div>
+
+            <!-- Output Section -->
+            <div class="card output-card">
+                <h2>Decoded CSR</h2>
+                
+                    <div class="decoded">
+                        <h3>Subject Attributes:</h3>
+                        <ul class="subject-attributes">
+                            
+                                <li>
+                                    <i class="fa fa-info-circle"></i> <!-- Font Awesome Icon -->
+                                    <strong>countryName: </strong>
+                                    In
+                                </li>
+                            
+                                <li>
+                                    <i class="fa fa-info-circle"></i> <!-- Font Awesome Icon -->
+                                    <strong>stateOrProvinceName: </strong>
+                                    &lt;img src=x onerror=alert(10)&gt;
+                                </li>
+                            
+                                <li>
+                                    <i class="fa fa-info-circle"></i> <!-- Font Awesome Icon -->
+                                    <strong>localityName: </strong>
+                                    &lt;img src=x onerror=alert(10)&gt;
+                                </li>
+                            
+                                <li>
+                                    <i class="fa fa-info-circle"></i> <!-- Font Awesome Icon -->
+                                    <strong>organizationName: </strong>
+                                    &lt;img src=x onerror=alert(10)&gt;
+                                </li>
+                            
+                                <li>
+                                    <i class="fa fa-info-circle"></i> <!-- Font Awesome Icon -->
+                                    <strong>organizationalUnitName: </strong>
+                                    &lt;img src=x onerror=alert(10)&gt;
+                                </li>
+                            
+                                <li>
+                                    <i class="fa fa-info-circle"></i> <!-- Font Awesome Icon -->
+                                    <strong>commonName: </strong>
+                                    autofocus onfocus=alert(1)
+                                </li>
+                            
+                                <li>
+                                    <i class="fa fa-info-circle"></i> <!-- Font Awesome Icon -->
+                                    <strong>emailAddress: </strong>
+                                    &lt;img src=x onerror=alert(10)&gt;
+                                </li>
+                            
+                        </ul>
+
+                        <h3>Public Key Modulus:</h3>
+                        <pre>D2FBF6658213606B840E4C6FA4DA551C327CE5F55CF42D9C2804D66C64FEB8F41BF845BC3C8C8D9E7AAD1B1F40CFC433DEFD15E72ABB3889C18824D0ACD71DFBD4FD001D4C84507B8544D56038AFED92D7DB1E8409ADE916DEDADA80FB01BD3259F99D55CBED8D60D10AF5DB8195EE0D6D32AF6D28BD0C04AE224673F5133C8F826568874B95B2F12CEB2DD99766C2EE45ACDEC3516E1CF0D95EE8511B25E05DA76CC1C647DBDA1A88D92352874C12BBA8AD7EB1227751F6D51EFAF52029CBF881F08ABE88BC68DB5564B2CE9E8C38AD9359B7BC963D611C7FE8C13BAADDA441CF394F7086E45A8928F8D93CE3ECC927EB57EB9AC1199841940FF1650BC8305B</pre>
+                    </div>
+                
+            </div>
+        </div>  
+        
+
+    </body>
+</html> 
+
+        <!-- <img src="http://172.17.217.165:8000"> -->
+
+       <!-- 1) <img src ="x" onerror="http://172.17.217.165:8000"> -->

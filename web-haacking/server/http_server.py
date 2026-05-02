@@ -12,7 +12,7 @@ class MyHandler(BaseHTTPRequestHandler):
         self.wfile.write(b"console.log('XSS triggered');")
 
 if __name__ == "__main__":
-    server = HTTPServer(("192.168.166.246", 8000), MyHandler)
+    server = HTTPServer(("172.17.217.165", 8000), MyHandler)
     print("Server running on port 8000...")
     server.serve_forever()
 

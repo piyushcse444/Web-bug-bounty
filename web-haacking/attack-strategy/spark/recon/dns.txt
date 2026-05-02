@@ -1,0 +1,38 @@
+1)spark.sbi.bank.in 
+    i) A -> 13.248.253.64 -> AWS
+    ii) AAAA-> 64:ff9b::df8:fd40
+    iii) ns -> not found -> no delegation
+    iv) mx -> not found -> no delegation
+    v) PTR -> a1b3c65c1f4ca6108.awsglobalaccelerator.com.
+    vi) axfr -> no servers could be reached
+    vii) +dnssec -> RRSIG = dqJIom2dD9FpZXjTPRbr7Ql2WO3PAtC5e9ZjpHEe2DnafeDkBDjO17gz H6dbT6SJbziMkEK4otCGE+ay8opxLg==
+    viii) CAA, SRV, CNAME, NAPTR, DKIM, _dmarc.spark.sbi.bank.in -> not found
+
+2) sbi.bank.in
+    i) A -> 103.209.96.176
+    ii) AAAA -> 2405:a700:14:100::6e
+    iii) ns 
+            i)ns1.sbi.bank.in.
+                i) A -> 92.123.94.102 
+                ii)AAAA-> 2600:14c0:6::66
+            ii)ns2.sbi.bank.in.
+                i) A -> 92.123.95.102 
+                ii)AAAA-> 2600:14c0:7::66   
+    iv) mx -> sbi-bank-in.mail.protection.outlook.com. 
+                A -> 52.101.145.0 , 52.101.145.2, 52.101.144.0 , 52.101.144.3      
+                AAAA-> 2a01:111:f403:cc2c::1, 2a01:111:f403:cc2c:: , 2a01:111:f403:cc2d:: , 2a01:111:f403:cc2d::1   
+                ns -> ns1-proddns.glbdns.o365filtering.com. , ns2-proddns.glbdns.o365filtering.com.
+    v)  SOA ->
+                primary name server ->  ns1.sbi.bank.in. 
+                admin email -> hostmaster.sbi.bank.in. 
+                serial number -> 2025081911 -> 2025/08/19
+    vi) axfr -> no servers could be reached
+    vii) txt -> 
+                i) v=spf1 include:spf.protection.outlook.com -all
+                ii) MS=ms46009078
+                iii) _bqe33b9kybatbq8hbbv5c879riyxrnc
+                iv) VISA=87D56A3C86E1F34E438DE8031F3C409D
+                v) globalsign-domain-verification=J5nY5lM72yFaXW0MA9xiVXqNAeGgQSYqh7PGFKMMlN
+                vi)_xh3ib4kyqdmz3dcciwfwf33lox2ptp0
+            
+             
