@@ -13,6 +13,7 @@ class HttpRequest:
 
 
 if __name__ == "__main__":
-    url = "http://192.168.166.246:8000"
+    url = "http://172.17.217.165:8000"
     response = HttpRequest().get_req(url)
     print(response.text)
+    
