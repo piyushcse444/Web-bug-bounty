@@ -1,0 +1,3 @@
+**************************** PRE LOGIN********************
+1) spark.sbi.bank.in
+2) proctering.spark.sbi.bank.in/index.html

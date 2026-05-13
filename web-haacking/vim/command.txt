@@ -1,0 +1,11 @@
+1) vim new_file.txt
+2) i -> insert mode , esc -> exit insert mode
+3) :wq -> save and exit
+4) :q! -> quite without save
+5) shift+g -> move to last line
+6) gg -> move to first lime
+7) /word_name -> search  aword -> n -> next occurance
+8) !word_name -> search a word from end -> n -> next occurance
+9) u -> undo , ctrl+r -> redo 
+10) :%s/prev_word/new_word/g -> replace prev_word with new_word 
+i1) select+y -> copy , p -> paste

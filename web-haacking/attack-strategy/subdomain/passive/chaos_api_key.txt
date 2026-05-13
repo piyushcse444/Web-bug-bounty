@@ -1,0 +1,9 @@
+url -> https://cloud.projectdiscovery.io
+api_key -> 107e090d-526e-40a1-9857-964f71a38d3d
+one time key setup :-
+echo 'export PDCP_API_KEY=107e090d-526e-40a1-9857-964f71a38d3d' >> ~/.bashrc
+source ~/.bashrc
+
+verify if it worked -> echo $PDCP_API_KEY
+
+remove it -> sed -i '/PDCP_API_KEY/d' ~/.bashrc

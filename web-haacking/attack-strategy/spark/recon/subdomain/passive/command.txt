@@ -1,0 +1,6 @@
+subfinder -d example.com -all -recursive -silent >> subs.txt
+assetfinder --subs-only example.com >> subs.txt
+chaos -d example.com -silent >> subs.txt
+findomain -t example.com -q >> subs.txt
+sort -u subs.txt -o subs.txt
+cat subs.txt | dnsx -a -cname -resp -wd example.com -silent >> resolved.txt

@@ -1,0 +1,8 @@
+subfinder -d msit.in -all -recursive -silent >> subs.txt
+assetfinder --subs-only msit.in >> subs.txt
+chaos -d msit.in -silent >> subs.txt
+findomain -t msit.in -q >> subs.txt
+sort -u subs.txt -o subs.txt
+cat subs.txt | dnsx -a -cname -resp  -silent >> resolved.txt
+cat resolved.txt | awk '{print $1}' | sort -u -o resolved_clean.txt
+cat resolved_clean.txt | httpx -sc -title -tech-detect -server -silent -o live.txt

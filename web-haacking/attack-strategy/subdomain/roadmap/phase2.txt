@@ -1,0 +1,15 @@
+PHASE 1 — Quick Recon (always do this first)
+─────────────────────────────────────────────
+subfinder + assetfinder + findomain + chaos
+        ↓
+    Takes 2-5 mins ⚡
+    Good enough for most targets
+
+
+PHASE 2 — Deep Recon (when you need more)
+──────────────────────────────────────────
+         + amass
+        ↓
+    Takes 30min - 2hrs 🐢
+    Use when Phase 1 gives few results
+    or target is large/important

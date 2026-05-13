@@ -1,0 +1,30 @@
+subfinder ──┐
+assetfinder─┤
+findomain ──┼──► all_subdomains.txt
+chaos ──────┤
+bbot ───────┘
+                    ↓
+              dnsx (DNS resolve)
+                    ↓
+          resolved_subdomains.txt
+                    ↓
+              httpx (HTTP probe)
+                    ↓
+           live_subdomains.txt
+                    ↓
+         gau / waymore / hakrawler
+                    ↓
+              all_urls.txt
+                    ↓
+           httpx (filter 404s)
+                    ↓
+           live_urls.txt ✅
+                    ↓
+          ┌─────────────────────┐
+          │   ATTACK PHASE      │
+          │ - SQLi              │
+          │ - XSS               │
+          │ - LFI               │
+          │ - IDOR              │
+          │ - Open Redirect     │
+          └─────────────────────┘

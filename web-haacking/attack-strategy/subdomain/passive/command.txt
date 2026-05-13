@@ -1,0 +1,44 @@
+# SUBDOMAIN ENUMERATION
+subfinder -d example.com -all -recursive -silent >> subs.txt
+assetfinder --subs-only example.com >> subs.txt
+chaos -d example.com -silent >> subs.txt
+findomain -t example.com -q >> subs.txt
+sort -u subs.txt -o subs.txt
+
+# DNS RESOLUTION
+cat subs.txt | dnsx -a -cname -resp -silent >> resolved.txt
+cat resolved.txt | awk '{print $1}' | sort -u -o resolved_clean.txt
+
+# HTTP PROBE
+cat resolved_clean.txt | httpx -sc -title -tech-detect -server -silent -o live.txt
+
+# URL DISCOVERY
+awk '{print $1}' live.txt | sort -u > live_domains.txt
+cat live_domains.txt | gau \
+    --threads 5 \
+    --retries 2 \
+    --blacklist png,jpg,jpeg,gif,css,woff,woff2,svg,ico,ttf,eot \
+    | sort -u > gau_all.tx
+
+# Run waymore (deep)
+waymore -i example.com \
+    -mode U \
+    -oU waymore_urls.txt \
+    -subs
+
+# Combine both
+cat gau_urls.txt waymore_urls.txt \
+    | sort -u > all_urls.txt
+
+# Probe live
+cat all_urls.txt | httpx -silent -fc 404 -sc -title -o live_urls.txtt
+
+# FILTER DEAD URLS
+cat gau_all.txt | httpx -silent -fc 404 -sc -title -o live_urls.txt
+
+# COUNT RESULTS
+echo "Subdomains: $(wc -l < subs.txt)"
+echo "Resolved:   $(wc -l < resolved_clean.txt)"
+echo "Live Hosts: $(wc -l < live.txt)"
+echo "Total URLs: $(wc -l < gau_all.txt)"
+echo "Live URLs:  $(wc -l < live_urls.txt)"

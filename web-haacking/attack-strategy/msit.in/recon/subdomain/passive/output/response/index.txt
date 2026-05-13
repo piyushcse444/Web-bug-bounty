@@ -1,0 +1,1 @@
+/home/kali/Desktop/web-haacking/attack-strategy/msit.in/recon/subdomain/passive/output/response/msit.in/cd642e0e4353577dc05cfbeca043b9b3be0714b7.txt https://msit.in (200 OK)
